@@ -29,10 +29,12 @@ export {MainDOMSource} from './MainDOMSource';
  * The other option is `preventDefault` that is set to false by default.
  * If set to true, the driver will automatically call `preventDefault()` on every event.
  *
- * `DOMSource.elements()` returns a stream of the DOM element(s) matched by the
- * selectors in the DOMSource. Also, `DOMSource.select(':root').elements()`
- * returns a stream of DOM element corresponding to the root (or container) of
- * the app on the DOM.
+ * `DOMSource.elements()` returns a stream of arrays of the DOM elements matched by the selectors in the DOMSource. Also, `DOMSource.select(':root').elements()`
+ * returns a stream of arrays of the DOM element corresponding to the root
+ * (or container) of the app on the DOM.
+ * Special cases are `DOMSource.select('document').elements()` that returns a
+ * Stream of documents (no arrays) and `DOMSource.select('body').elements()`
+ * that returns a Stream of HTMLBodyElements (no arrays).
  *
  * @param {(String|HTMLElement)} container the DOM selector for the element
  * (or the element itself) to contain the rendering of the VTrees.
